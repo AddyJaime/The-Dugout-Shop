@@ -1,0 +1,10 @@
+# Workspaces del monorepo — cualquier carpeta dentro de apps/ o  packages/ es tratada como un proyecto independiente por pnpm y 
+  # Turborepo
+packages:
+  - apps/*
+  - packages/*
+
+  # Lista de dependencias que tienen permiso de compilar código 
+  # nativo en tu Mac durante la instalación
+onlyBuiltDependencies:
+  - sharp

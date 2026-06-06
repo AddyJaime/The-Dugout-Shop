@@ -1,0 +1,8 @@
+// Prettier is a tool that automatically formats your code so it always looks clean and consistent — spacing, indentation, quotes, etc.
+
+{
+  "semi": false,   //no pone punto y coma al final de cada linea
+  "singleQuote": true, //usa comillas simples ' ' en vez de dobles ""
+  "tabWidth":2, //cada indentacion son 2 espacios 
+  "trailingComma": "es5" //"es5" pone coma al final del ultimo elemento en objectos y arryas
+}
