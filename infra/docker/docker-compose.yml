@@ -1,0 +1,20 @@
+services:
+  catalog_db:
+    image: postgres:16-alpine
+    container_name: catalog_db
+    # para produccion seria un network por servicio aislado
+    networks:
+      - dugout_network 
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${catalog_user}
+      POSTGRES_PASSWORD: ${catalog_password}
+      POSTGRES_DB: ${catalog_db}
+    volumes:
+      -  catalog_data:/var/lib/postgresql/data
+
+volumes:
+    catalog_data:
+
+networks:
+  dugout_network:
