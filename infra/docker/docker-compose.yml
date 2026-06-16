@@ -4,17 +4,32 @@ services:
     container_name: catalog_db
     # para produccion seria un network por servicio aislado
     networks:
-      - dugout_network 
+      - dugout_network
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${catalog_user}
       POSTGRES_PASSWORD: ${catalog_password}
       POSTGRES_DB: ${catalog_db}
     volumes:
-      -  catalog_data:/var/lib/postgresql/data
+      - catalog_data:/var/lib/postgresql/data
+
+  order_db:
+    image: postgres:16-alpine
+    container_name: order_db
+    networks:
+      - dugout_network
+    restart: unless-stopped
+    environment: 
+      POSTGRES_USER: ${order_user}
+      POSTGRES_PASSWORD: ${order_password}
+      POSTGRES_DB: ${order_db}
+    # aqui Docker guarda los datos de order_db para que no sepierdan al reiniciar
+    volumes:
+      - order_data:/var/lib/postgresql/data
 
 volumes:
-    catalog_data:
+  catalog_data:
+  order_data:
 
 networks:
   dugout_network:
