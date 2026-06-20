@@ -52,7 +52,7 @@ services:
       POSTGRES_DB: ${payment_db}
     volumes:
       - payment_data:/var/lib/postgresql/data
-
+# base de dato de keycloak
   keycloak_db:
     image: postgres:16-alpine
     container_name: keycloak_db
@@ -66,7 +66,7 @@ services:
     volumes:
       - keycloak_data:/var/lib/postgresql/data
 
-
+# cliente para acceder al ui de keycloak
   keycloak:
     image: quay.io/keycloak/keycloak:26.1
     command: start-dev
@@ -79,14 +79,15 @@ services:
     ports:
       - 8080:8080
     environment:
-      KC_DB:
-      KC_DB_URL:
-      KC_DB_USERNAME:
-      KC_DB_PASSWORD:
-      KEYCLOAK_ADMIN:
-      KEYCLOAK_ADMIN_PASSWORD:
+      KC_DB: postgres
+      # jdbc java db connectivity, keycloak corre en java, este protocolo le dice a keycloak que se connecte a postgres, keycloak aqui el host, nombre del servicio docker, en la red de docker, los contene se hablar por nombre de servicio no de ip, nombre de la base de dato
+      KC_DB_URL: jdbc:postgresql://keycloak_db:5432/${keycloak_db}
+      KC_DB_USERNAME: ${keycloak_user}
+      KC_DB_PASSWORD: ${keycloak_password}
+      KEYCLOAK_ADMIN: ${kc_admin}
+      KEYCLOAK_ADMIN_PASSWORD: ${kc_admin_password}
 
-      
+      # este servico de keycloak es stateless no guarda anda su estado vive en la db que creamos arriba 
 
 
 volumes:
