@@ -10,6 +10,8 @@ services:
       POSTGRES_USER: ${catalog_user}
       POSTGRES_PASSWORD: ${catalog_password}
       POSTGRES_DB: ${catalog_db}
+    ports:
+        - "5436:5432"
     volumes:
       - catalog_data:/var/lib/postgresql/data
 
@@ -23,6 +25,8 @@ services:
       POSTGRES_USER: ${order_user}
       POSTGRES_PASSWORD: ${order_password}
       POSTGRES_DB: ${order_db}
+    ports:
+      - "5435:5432"
     # aqui Docker guarda los datos de order_db para que no sepierdan al reiniciar
     volumes:
       - order_data:/var/lib/postgresql/data
@@ -37,6 +41,8 @@ services:
       POSTGRES_USER: ${auth_user}
       POSTGRES_PASSWORD: ${auth_password}
       POSTGRES_DB: ${auth_db}
+    ports:
+        -   "5432:5432"
     volumes:
       - auth_data:/var/lib/postgresql/data
 
@@ -50,6 +56,8 @@ services:
       POSTGRES_USER: ${payment_user}
       POSTGRES_PASSWORD: ${payment_password}
       POSTGRES_DB: ${payment_db}
+    ports:
+        - "5433:5432"
     volumes:
       - payment_data:/var/lib/postgresql/data
 # base de dato de keycloak
@@ -63,6 +71,8 @@ services:
       POSTGRES_USER: ${keycloak_user}
       POSTGRES_PASSWORD: ${keycloak_password}
       POSTGRES_DB: ${keycloak_db}
+    ports:
+      - "5434:5432"
     volumes:
       - keycloak_data:/var/lib/postgresql/data
 

@@ -3,5 +3,8 @@
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src"
-  }
+  },
+  // se escluye porque no lo necesitamos al momento de compilar
+  // nuestro codigo ni se necesita en prod solo para ocrrer algunos coMANDOS DEL CLI
+  "exclude": ["prisma.config.ts"]
 }

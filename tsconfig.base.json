@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs", //ts lo traduce por debajo a node
+    "lib": ["ES2020"], //para funciones nativas de js esten disponibles
+    "strict": true,
+    "esModuleInterop": true, //permite importar librerias viejas de js
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true, //permite hacer import data from './data.json' directamnet en typescript
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
+  },
+  "exclude": ["node_modules", "dist"]
+}
