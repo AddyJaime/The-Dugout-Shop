@@ -13,3 +13,23 @@ export default defineConfig({
     url: env("DATABASE_URL"),
   },
 });
+
+// Table user_profile {
+//   id                uuid          [pk, default: `gen_random_uuid()`, note: 'Internal ID, used by this database']
+
+//   keycloak_id       uuid          [not null, unique, note: 'External ID — references sub claim from Keycloak JWT']
+
+//   favorite_team_id  uuid          [null, note: 'References team.id in catalog_db. Null until user selects a favorite team']
+
+//   shipping_street   varchar(255)  [null, note: 'Street address, e.g. 123 Main St']
+
+//   shipping_apt      varchar(50)   [null, note: 'Apartment/Unit/Suite number, optional']
+
+//   shipping_city     varchar(100)  [null]
+
+//   shipping_state    varchar(2)    [null, note: 'US state abbreviation, e.g. VA']
+
+//   shipping_zip      varchar(10)   [null, note: 'ZIP or ZIP+4, e.g. 20120 or 20120-1234']
+//   created_at        timestamp     [not null, default: `now()`]
+//   updated_at        timestamp     [not null, default: `now()`]
+// }

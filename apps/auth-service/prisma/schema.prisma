@@ -7,7 +7,22 @@ generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
 }
+// Sin ? = NOT NULL
+// Con ? = nullable
 
 datasource db {
   provider = "postgresql"
+}
+
+model User_profile {
+  id              String  @id @default(uuid())
+  keycloak_id    String  @unique //no lleva default porque mi base de dato no genera este id llega de keycloak, no pueden existir dos filas con el mismo keycloak_id
+  favorite_team_id  String? //signifca es opcional 
+  shipping_street  String?
+  shipping_apt        String?
+  shipping_city      String?
+  shipping_state    String?
+  shipping_zip       String?
+  created_at            DateTime  @default(now())// antes puse @default(now()) pero eso solo corre una vez para que se actualice toodo el tiempo es con updateat
+  updated_at            DateTime  @updatedAt
 }
