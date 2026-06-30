@@ -19,7 +19,7 @@ model User_profile {
   keycloak_id    String  @unique //no lleva default porque mi base de dato no genera este id llega de keycloak, no pueden existir dos filas con el mismo keycloak_id
   favorite_team_id  String? //signifca es opcional 
   shipping_street  String?
-  shipping_apt        String?
+  shipping_apt        String? 
   shipping_city      String?
   shipping_state    String?
   shipping_zip       String?

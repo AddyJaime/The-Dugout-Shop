@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import express, { Response, Request } from "express";
+// import "./middleware/auth.middleware"
 
 const app = express();
 const PORT = process.env.PORT || 3000;
