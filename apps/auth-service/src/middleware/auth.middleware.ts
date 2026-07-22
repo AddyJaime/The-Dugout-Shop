@@ -115,6 +115,10 @@ async function authenticateToken(
 
   try {
     const payload = await verifyToken(token);
+    // confia en mi esto viene asi del payload, aqui estmaos
+    // metiedo el payload dentro del interface request
+    req.user = payload as { sub: string };
+
     next();
   } catch (error) {
     res.status(401).json({ message: "invalid token" });

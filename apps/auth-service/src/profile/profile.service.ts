@@ -20,7 +20,7 @@ export const createProfile = async (profileData: CreateProfileInput) => {
 export const getProfile = async (input: GetProfileInput) => {
   const foundProfile = await prisma.user_profile.findUnique({
     where: {
-      // aqui estmaos buscnaod por el id de keycloak no por el id de la db
+      // Buscamos por keycloak_id porque es el único id que el frontend conoce (viene en el token).
       keycloak_id: input.keycloak_id,
     },
   });
