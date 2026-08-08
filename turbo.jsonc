@@ -1,2 +1,11 @@
 // turbo.json is the configuration file for Turborepo, a build system for monorepos.
 // It tells Turbo which tasks to run (like build, test, lint) and how they depend on each other — so it knows what can run in parallel and what needs to finish first
+
+{
+    "$schema": "https://turborepo.dev/schema.json",
+    "tasks": {
+      "build": {
+        "outputs": ["dist/**"]
+      }
+    }
+  }

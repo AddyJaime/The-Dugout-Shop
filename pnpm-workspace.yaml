@@ -1,6 +1,7 @@
+# A workspace in a monorepo is an individual sub-project, app, or shared library located inside a single repository
 packages:
   - apps/*
-  - packages/*
+  - packages/*  #librerias compartidas
 
 ignoredBuiltDependencies:
   - unrs-resolver

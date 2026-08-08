@@ -1,5 +1,6 @@
 {
   "name": "the-dugout-shop",
+  "packageManager": "pnpm@10.30.3",
   "private": true,
   "scripts": {
     "dev": "turbo dev",
