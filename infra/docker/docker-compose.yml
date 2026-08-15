@@ -46,6 +46,27 @@ services:
     volumes:
       - auth_data:/var/lib/postgresql/data
 
+  # Microservicio que valida JWTs de Keycloak y gestiona perfiles de usuario
+  # NO guarda usuarios ni contraseñas — eso lo hace Keycloak
+  # Guarda: shipping_address, favorite_team_id en auth_db
+  auth_service:
+    build:
+      context: ../../             # root del monorepo — Docker necesita ver pnpm-workspace.yaml, turbo.jsonc, etc. salir hacia el root desde eeste dockercompose
+      dockerfile: apps/auth-service/Dockerfile  # donde se ecnuentra dockerfile
+    container_name: auth_service
+    networks:
+      - dugout_network
+    restart: unless-stopped
+    depends_on:
+      - auth_db      # necesita la DB para guardar perfiles
+      - keycloak     # necesita Keycloak para validar JWTs
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      DATABASE_URL: ${DATABASE_URL}               # conexión a auth_db (host = nombre servicio Docker)
+      KEYCLOAK_JWKS_URI: ${KEYCLOAK_JWKS_URI}     # URL donde Keycloak expone sus llaves públicas
+    ports:
+      - "3000:3000"
+
   payment_db:
     image: postgres:16-alpine
     container_name: payment_db
