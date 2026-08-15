@@ -5,4 +5,5 @@ The Dugout Shop is a learning project where I build a production-style e-commerc
 📋 Progress board: https://trello.com/b/Q8w2JXSr/%E2%9A%BE-the-dugout-shop
 
 🏗️ Status
+
 🚧 Under active development. Track progress on the Trello board.
